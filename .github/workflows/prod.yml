@@ -1,8 +1,6 @@
 name: Node - SSH deploy
 
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [main]
   pull_request:
@@ -17,10 +15,10 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
 
-      - name: Use Node.js 16
-        uses: actions/setup-node@v2-beta
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'
 
       - name: 🔨 Build Project
         run: |
@@ -36,4 +34,5 @@ jobs:
           REMOTE_HOST: 192.34.62.123
           REMOTE_USER: mantis
           TARGET: public_html/free
-          EXCLUDE: '/dist/, /node_modules/'
+          EXCLUDE_DIRS: '/dist/, /node_modules/'
+
